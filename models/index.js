@@ -1,7 +1,24 @@
 // ============ IMPORTS
+const mongoose = require('mongoose');
 
 // ============ CONNECT
+const connectionString = 'mongodb://localhost:27017/lab';
 
 // ------------ Config, Promises
+mongoose.connect(connectionString, {
+  useNewUrlParser: true,
+  useFindAndModify: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+})
+  .then(() => {
+    console.log('Successfully connected to MongoDB lab db');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-// ============ EXPORTS
+// =========== EXPORTS
+module.exports = {
+  Bird: require('./Bird')
+}

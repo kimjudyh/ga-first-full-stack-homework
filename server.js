@@ -8,6 +8,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 // =========== CONTROLLERS
+const birdController = require('./controllers/birdController');
 
 // =========== MIDDLEWARE
 app.use(bodyParser.urlencoded({extended: false}));
