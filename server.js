@@ -26,6 +26,8 @@ app.get('/', (req, res) => {
   res.send('Welcome to the homepage');
 });
 
+app.use('/birds', birdController);
+
 // =========== PORT LISTENER
 app.listen(4500, () => {
   console.log('Server running at port 4500');
