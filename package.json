@@ -1,0 +1,19 @@
+{
+  "name": "first-full-stack-homework",
+  "version": "1.0.0",
+  "description": "MEN stack hw",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.generalassemb.ly/judykim-ga/first-full-stack-homework.git"
+  },
+  "author": "Judy Kim",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
