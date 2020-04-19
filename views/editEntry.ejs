@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Seen Entry</title>
+</head>
+<body>
+  <h2>Edit Entry</h2>
+  <div>
+    <form action="/birds/<%= id %>/entry/<%= entryId %>?_method=PUT" method="POST">
+      <div>
+        <label for="location">Location: </label>
+        <input type="text" id="location" name="location" value="<%= entry.location %>">
+      </div>
+      <div>
+        <label for="date">Date: </label>
+        <input type="text" id="date" name="date" value="<%= entry.date %>">
+      </div>
+      <div>
+        <label for="notes">Notes: </label>
+        <input type="text" id="notes" name="notes" value="<%= entry.notes %>">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  
+</body>
+</html>
