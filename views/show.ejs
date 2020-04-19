@@ -10,7 +10,9 @@
   <div>
     <a href="/birds">Index</a> |
     <a href="/birds/<%= id %>/edit">Edit</a> |
-    <a href="/birds/<%= id %>/delete">Delete</a>
+    <form action="/birds/<%= id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete</button>
+    </form>
   </div>
   <div>
     <% if (bird.image) { %>
