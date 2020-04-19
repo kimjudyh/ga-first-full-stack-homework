@@ -7,7 +7,7 @@ const connectionString = 'mongodb://localhost:27017/full-stack-hw';
 // ------------ Config, Promises
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
-  useFindAndModify: true,
+  useFindAndModify: false,
   useCreateIndex: true,
   useUnifiedTopology: true,
 })
