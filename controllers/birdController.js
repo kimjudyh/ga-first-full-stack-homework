@@ -26,17 +26,28 @@ router.post('/', (req, res) => {
 // ----------- Dynamic Routes
 // Show route
 router.get('/:id', (req, res) => {
-  //res.send(req.params.id);
   res.render('show', {
     id: req.params.id
   });
 });
 
 // GET edit route
+router.get('/:id/edit', (req, res) => {
+  console.log(req.params.id)
+  res.render('edit', {
+    id: req.params.id
+  });
+})
 
 // PUT update route
+router.put('/:id', (req, res) => {
+  res.redirect(`/birds/${req.params.id}`);
+})
 
 // DELETE destroy route
+router.delete('/:id', (req, res) => {
+  // remove
+})
 
 
 // =========== EXPORTS
