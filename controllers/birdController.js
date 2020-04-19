@@ -19,9 +19,18 @@ router.get('/new', (req, res) => {
 });
 
 // POST create route
+router.post('/', (req, res) => {
+  res.send(req.body);
+});
 
 // ----------- Dynamic Routes
 // Show route
+router.get('/:id', (req, res) => {
+  //res.send(req.params.id);
+  res.render('show', {
+    id: req.params.id
+  });
+});
 
 // GET edit route
 
