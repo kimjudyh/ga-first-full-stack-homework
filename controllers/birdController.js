@@ -8,9 +8,15 @@ const db = require('../models');
 // =========== ROUTES
 // Index route
 router.get('/', (req, res) => {
-  res.render('index', {
-    birds: [],
-  });
+  db.Bird.find({}, (err, allBirds) => {
+    if (err) {
+      console.log(err);
+      res.redirect('/');
+    }
+    res.render('index', {
+      birds: allBirds,
+    });
+  })
 });
 
 // GET new route
