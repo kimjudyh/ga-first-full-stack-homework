@@ -8,6 +8,7 @@ const db = require('../models');
 // =========== ROUTES
 // Index route
 router.get('/', (req, res) => {
+  // find all birds in collection
   db.Bird.find({}, (err, allBirds) => {
     if (err) {
       console.log(err);
@@ -21,19 +22,21 @@ router.get('/', (req, res) => {
 
 // GET new route
 router.get('/new', (req, res) => {
+  // render new form to make new bird
   res.render('new');
 });
 
 // POST create route
 router.post('/', (req, res) => {
-  //console.log(db.Bird);
-  //console.log(req.body.seen);
+  // create new entry in collection using request sent from new form
   db.Bird.create({
     name: req.body.name,
     color: req.body.color,
+    // structure request data to match schema
     seen: [{
       location: req.body.location,
-      date: req.body.date
+      date: req.body.date,
+      notes: req.body.notes
     }],
     image: req.body.image
   }, (err, newBird) => {
@@ -41,6 +44,7 @@ router.post('/', (req, res) => {
       console.log(err);
       res.redirect('/');
     }
+    // send back to birds index
     res.redirect('/birds');
   });
 });
@@ -48,10 +52,17 @@ router.post('/', (req, res) => {
 // ----------- Dynamic Routes
 // Show route
 router.get('/:id', (req, res) => {
-  res.render('show', {
-    bird: foundBird,
-    id: req.params.id
-  });
+  // show specific bird using its ID from database
+  db.Bird.findById(req.params.id, (err, foundBird) => {
+    if (err) {
+      console.log(err);
+      res.redirect('/');
+    }
+    res.render('show', {
+      bird: foundBird,
+      id: req.params.id
+    });
+  })
 });
 
 // GET edit route

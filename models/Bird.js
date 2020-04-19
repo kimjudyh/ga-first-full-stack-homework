@@ -15,6 +15,7 @@ const BirdSchema = new mongoose.Schema({
     {
       location: {type: String, required: true},
       date: {type: String},
+      notes: {type: String},
     },
   ],
   image: {
