@@ -1,6 +1,7 @@
 // =========== IMPORTS
 const express = require('express');
 const router = express.Router();
+const birdEntryController = require('./birdEntryController');
 
 // =========== MODELS
 const db = require('../models');
@@ -111,6 +112,8 @@ router.delete('/:id', (req, res) => {
   })
 })
 
+// use controller for entries specific to each bird
+router.use('/', birdEntryController);
 
 // =========== EXPORTS
 module.exports = router;
