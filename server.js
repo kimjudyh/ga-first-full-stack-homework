@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 
 // =========== ROUTES
 app.get('/', (req, res) => {
-  res.send('Welcome to the homepage');
+  res.send('Welcome to the First Full Stack HW. </br> <a href="/birds">Birds</a>');
 });
 
 app.use('/birds', birdController);

@@ -1,4 +1,5 @@
 // controller for Bird Seen Entries
+// Bird: {.. seen: [{location: x, date: y, notes: z}, {..}]}
 
 // ========== IMPORTS
 const express = require('express');
@@ -18,8 +19,6 @@ entryRouter.get('/:id/entry/new', (req, res) => {
 
 // POST create route
 entryRouter.post('/:id/entry', (req, res) => {
-  console.log(req.params);
-  console.log(req.body);
   db.Bird.findByIdAndUpdate(
     req.params.id,
     {
@@ -42,14 +41,18 @@ entryRouter.post('/:id/entry', (req, res) => {
 
 // GET edit route
 entryRouter.get('/:id/entry/:entryId/edit', (req, res) => {
+  // trying out another way of finding by id AND subdocument id
   db.Bird.findOne({_id: req.params.id, seen: {$elemMatch: {_id: req.params.entryId}}},
      (err, foundBird) => {
     if (err) {
       console.log(err); res.redirect('/');
     }
-    console.log(foundBird);
     res.render('editEntry', {
       id: req.params.id,
+      bird: foundBird,
+      // seen is a subdocument in the Bird model
+      // seen: [{_id}, {_id}, {_id}]
+      // get the object in seen array that matches specific _id
       entry: foundBird.seen.id(req.params.entryId),
       entryId: req.params.entryId,
     });
@@ -59,12 +62,13 @@ entryRouter.get('/:id/entry/:entryId/edit', (req, res) => {
 // PUT update route
 entryRouter.put('/:id/entry/:entryId', (req, res) => {
   let entryId = req.params.entryId;
-  console.log(req.body);
-  db.Bird.findByIdAndUpdate(req.params.id, {  }, () => {})
   db.Bird.findOneAndUpdate(
+    // filter
     { _id: req.params.id, "seen._id": entryId },
+    // object to update
     {
       $set: {
+        // use positional $ to update subdocument with specified id 
         "seen.$":
         {
           date: req.body.date,
@@ -73,15 +77,14 @@ entryRouter.put('/:id/entry/:entryId', (req, res) => {
         }
       }
     },
-    { arrayFilters: [{ element: entryId }],
-     new: true },
-  (err, foundBird) => {
-    if (err) {
-      console.log(err); res.redirect('/');
-    }
-    console.log('found bird for entry', foundBird);
-    res.redirect(`/birds/${req.params.id}`);
-  })
+    // return updated object
+    { new: true },
+    (err, foundBird) => {
+      if (err) {
+        console.log(err); res.redirect('/');
+      }
+      res.redirect(`/birds/${req.params.id}`);
+    })
 })
 
 // =========== EXPORTS

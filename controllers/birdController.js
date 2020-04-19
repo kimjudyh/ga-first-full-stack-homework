@@ -97,8 +97,7 @@ router.put('/:id', (req, res) => {
         console.log(err); res.redirect('/');
       }
       res.redirect(`/birds/${req.params.id}`);
-    }
-  )
+    });
 });
 
 // DELETE destroy route
