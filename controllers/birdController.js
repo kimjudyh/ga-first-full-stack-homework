@@ -20,13 +20,30 @@ router.get('/new', (req, res) => {
 
 // POST create route
 router.post('/', (req, res) => {
-  res.send(req.body);
+  //console.log(db.Bird);
+  //console.log(req.body.seen);
+  db.Bird.create({
+    name: req.body.name,
+    color: req.body.color,
+    seen: [{
+      location: req.body.location,
+      date: req.body.date
+    }],
+    image: req.body.image
+  }, (err, newBird) => {
+    if (err) {
+      console.log(err);
+      res.redirect('/');
+    }
+    res.redirect('/birds');
+  });
 });
 
 // ----------- Dynamic Routes
 // Show route
 router.get('/:id', (req, res) => {
   res.render('show', {
+    bird: foundBird,
     id: req.params.id
   });
 });
