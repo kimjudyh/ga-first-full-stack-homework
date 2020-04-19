@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Seen Entry</title>
+</head>
+<body>
+  <h2>New Seen Entry</h2>
+  <div>
+    <form action="/birds/<%= id %>/entry" method="POST">
+      <div>
+        <label for="location">Location Seen: </label>
+        <input type="text" id="location" name="location">
+      </div>
+      <div>
+        <label for="date">Date Seen: </label>
+        <input type="text" id="date" name="date">
+      </div>
+      <div>
+        <label for="notes">Notes: </label>
+        <input type="text" id="notes" name="notes">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  
+</body>
+</html>
