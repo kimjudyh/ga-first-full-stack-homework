@@ -13,7 +13,11 @@
     <a href="/birds/<%= id %>/delete">Delete</a>
   </div>
   <div>
+    <% if (bird.image) { %>
     <img src="<%= bird.image %>" alt="<%= bird.name %>">
+    <% } else { %>
+      <img src="/img/annas_hummingbird.jpg" alt="Add a Picture!">
+    <% } %>
   </div>
   <div>
     <p>Color: <%= bird.color %></p>
