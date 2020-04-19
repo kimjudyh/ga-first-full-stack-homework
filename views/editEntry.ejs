@@ -6,7 +6,8 @@
   <title>Edit Seen Entry</title>
 </head>
 <body>
-  <h2>Edit Entry</h2>
+  <h2><%= bird.name %></h2>
+  <h3>Edit Seen Entry </h3>
   <div>
     <form action="/birds/<%= id %>/entry/<%= entryId %>?_method=PUT" method="POST">
       <div>

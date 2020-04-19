@@ -9,30 +9,31 @@
   <h2>Create a New Entry</h2>
 
   <div class="form">
+    <p>* indicates a required field</p>
     <form action="/birds" method="POST">
       <div>
-        <label for="name">Name: </label>
-        <input type="text" id="name" name="name">
+        <label for="name">Name*: </label>
+        <input type="text" id="name" name="name" placeholder="ex. Osprey">
       </div>
       <div>
-        <label for="color">Color: </label>
-        <input type="text" id="color" name="color">
+        <label for="color">Color*: </label>
+        <input type="text" id="color" name="color" placeholder="ex. White, Brown">
       </div>
       <div>
-        <label for="location">Location Seen: </label>
-        <input type="text" id="location" name="location">
+        <label for="location">Location Seen*: </label>
+        <input type="text" id="location" name="location" placeholder="ex. Emerald Bay">
       </div>
       <div>
-        <label for="date">Date Seen: </label>
-        <input type="text" id="date" name="date">
+        <label for="date">Date Seen*: </label>
+        <input type="text" id="date" name="date" placeholder="ex. 8/21/19">
       </div>
-      <div>
+      <div class="notes">
         <label for="notes">Notes: </label>
-        <input type="text" id="notes" name="notes">
+        <input type="text" id="notes" name="notes" placeholder="ex. Saw half a dozen osprey nests with young chicks.">
       </div>
       <div>
         <label for="image">Image URL: </label>
-        <input type="text" name="image" id="image">
+        <input type="text" name="image" id="image" placeholder="ex. www.bird.com/img.jpg">
       </div>
       <button type="submit">Submit</button>
     </form>
