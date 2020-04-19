@@ -67,16 +67,38 @@ router.get('/:id', (req, res) => {
 
 // GET edit route
 router.get('/:id/edit', (req, res) => {
+  // find bird by id, render edit form
   console.log(req.params.id)
-  res.render('edit', {
-    id: req.params.id
-  });
+  db.Bird.findById(req.params.id, (err, foundBird) => {
+    if (err) {
+      console.log(err); res.redirect('/');
+    }
+    res.render('edit', {
+      bird: foundBird,
+      id: req.params.id
+    });
+  })
 })
 
 // PUT update route
 router.put('/:id', (req, res) => {
-  res.redirect(`/birds/${req.params.id}`);
-})
+  // update bird with specific ID in database
+  db.Bird.findByIdAndUpdate(
+    req.params.id,  // which id to search by
+    {
+      name: req.body.name,
+      color: req.body.color,
+      image: req.body.image
+    }, // object to update
+    {new: true},  // get update record back
+    (err, updatedBird) => {
+      if (err) {
+        console.log(err); res.redirect('/');
+      }
+      res.redirect(`/birds/${req.params.id}`);
+    }
+  )
+});
 
 // DELETE destroy route
 router.delete('/:id', (req, res) => {

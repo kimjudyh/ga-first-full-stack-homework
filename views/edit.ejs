@@ -11,7 +11,15 @@
     <form action="/birds/<%= id %>?_method=PUT" method="POST">
       <div>
         <label for="name">Name: </label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" value="<%= bird.name %>">
+      </div>
+      <div>
+        <label for="color">Color: </label>
+        <input type="text" id="color" name="color" value="<%= bird.color %>">
+      </div>
+      <div>
+        <label for="image">Image URL: </label>
+        <input type="text" id="image" name="image" value="<%= bird.image %>">
       </div>
       <button type="submit">Submit</button>
     </form>
