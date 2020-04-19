@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // ============ CONNECT
-const connectionString = 'mongodb://localhost:27017/lab';
+const connectionString = 'mongodb://localhost:27017/full-stack-hw';
 
 // ------------ Config, Promises
 mongoose.connect(connectionString, {
