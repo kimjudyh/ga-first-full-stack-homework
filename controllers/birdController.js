@@ -102,7 +102,13 @@ router.put('/:id', (req, res) => {
 
 // DELETE destroy route
 router.delete('/:id', (req, res) => {
-  // remove
+  // remove bird with specified id from db
+  db.Bird.findByIdAndDelete(req.params.id, (err, delBird) => {
+    if (err) {
+      console.log(err); res.redirect('/');
+    }
+    res.redirect('/birds');
+  })
 })
 
 

@@ -15,7 +15,9 @@
       <h4><%= birds[i].name %></h4>
       <a href="/birds/<%= birds[i]._id %>">See Profile</a> | 
       <a href="/birds/<%= birds[i]._id %>/edit">Edit</a> |
-      <a href="/birds/<%= birds[i]._id %>/delete">Delete</a>
+      <form action="/birds/<%= birds[i]._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+      </form>
     </div>
   <% } %>
 </body>
