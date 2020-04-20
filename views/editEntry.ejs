@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="/css/main.css">
   <title>Edit Seen Entry</title>
 </head>
 <body>
+  <div class="form">
   <h2><%= bird.name %></h2>
   <h3>Edit Seen Entry </h3>
-  <div>
     <form action="/birds/<%= id %>/entry/<%= entryId %>?_method=PUT" method="POST">
       <div>
         <label for="location">Location: </label>
@@ -25,6 +25,7 @@
       </div>
       <button type="submit">Submit</button>
     </form>
+    <a href="/birds/<%= id %>">Cancel</a>
   </div>
   
 </body>

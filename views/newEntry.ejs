@@ -3,27 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="/css/main.css">
   <title>New Seen Entry</title>
 </head>
 <body>
+  <div class="form">
   <h2>New Seen Entry</h2>
-  <div>
+    <p>* indicates a required field</p>
     <form action="/birds/<%= id %>/entry" method="POST">
       <div>
-        <label for="location">Location Seen: </label>
-        <input type="text" id="location" name="location">
+        <label for="location">Location Seen*: </label>
+        <input type="text" id="location" name="location" placeholder="ex. Emerald Bay">
       </div>
       <div>
         <label for="date">Date Seen: </label>
-        <input type="text" id="date" name="date">
+        <input type="text" id="date" name="date" placeholder="ex. 8/21/19">
       </div>
       <div>
         <label for="notes">Notes: </label>
-        <input type="text" id="notes" name="notes">
+        <input type="text" id="notes" name="notes" placeholder="ex. Saw 5 osprey nests.">
       </div>
       <button type="submit">Submit</button>
     </form>
+    <a href="/birds"><button>Cancel</button></a>
   </div>
   
 </body>
