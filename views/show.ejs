@@ -8,42 +8,42 @@
 </head>
 <body>
   <div class="show">
-  <h2><%= bird.name %></h2>
-  <div>
-    <a href="/birds">Index</a> |
-    <a href="/birds/<%= id %>/edit">Edit</a> |
-    <form action="/birds/<%= id %>?_method=DELETE" method="POST">
-      <button type="submit">Delete</button>
-    </form>
-  </div>
-  <div>
-    <% if (bird.image) { %>
-    <img src="<%= bird.image %>" alt="<%= bird.name %>">
-    <% } else { %>
+    <h2><%= bird.name %></h2>
+    <div>
+      <a href="/birds">Index</a> |
+      <a href="/birds/<%= id %>/edit"><button>Edit</button></a>
+      <form action="/birds/<%= id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+    <div>
+      <% if (bird.image) { %>
+      <img src="<%= bird.image %>" alt="<%= bird.name %>">
+      <% } else { %>
       <img src="/img/annas_hummingbird.jpg" alt="Add a Picture!">
-    <% } %>
-  </div>
-  <div>
-    <p>Color: <%= bird.color %></p>
-  </div>
-  <div>
-    <% for (let i = 0; i < bird.seen.length; i++) { %>
+      <% } %>
+    </div>
+    <div>
+      <p>Color: <%= bird.color %></p>
+    </div>
+    <div>
+      <% for (let i = 0; i < bird.seen.length; i++) { %>
       <ul>
         <li>Entry <%= i + 1 %></li>
-        <p>Seen Location: <%= bird.seen[i].location %></p> 
+        <p>Seen Location: <%= bird.seen[i].location %></p>
         <p>Seen Date: <%= bird.seen[i].date %></p>
-        <p>Notes: 
+        <p>Notes:
           <% if (bird.seen[i].notes) { %>
-            <%= bird.seen[i].notes %>
+          <%= bird.seen[i].notes %>
           <% } else { %>
-            None
+          None
           <% } %>
         </p>
         <a href="/birds/<%= id %>/entry/<%= bird.seen[i]._id %>/edit">Edit Entry</a>
-        </ul>
-    <% } %>
-    <a href="/birds/<%= id %>/entry/new">New Entry</a>
-  </div>
+      </ul>
+      <% } %>
+      <a href="/birds/<%= id %>/entry/new">New Entry</a>
+    </div>
   </div>
   
 </body>

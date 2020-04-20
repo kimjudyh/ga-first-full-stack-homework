@@ -8,7 +8,8 @@
 </head>
 <body>
   <div class="form">
-  <h2>Edit Bird</h2>
+  <h2><%= bird.name %></h2>
+  <h3>Edit Bird</h2>
     <form action="/birds/<%= id %>?_method=PUT" method="POST">
       <div>
         <label for="name">Name: </label>

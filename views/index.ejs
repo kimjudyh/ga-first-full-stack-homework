@@ -8,14 +8,13 @@
 </head>
 <body>
   <div class="index">
-    <h2>Welcome to the Bird Index</h2>
+    <h2>Welcome to the Bird Journal</h2>
     <div>
       <a href="/birds/new"><button class="new">New Bird</button></a>
     </div>
     <% for (let i = 0; i < birds.length; i++) { %>
     <div class="bird">
-      <h4><%= birds[i].name %></h4>
-      <a href="/birds/<%= birds[i]._id %>">Profile</a>
+      <a href="/birds/<%= birds[i]._id %>"><h4><%= birds[i].name %></h4></a>
       <a href="/birds/<%= birds[i]._id %>/edit"><button class="edit">Edit</button></a>
       <form action="/birds/<%= birds[i]._id %>?_method=DELETE" method="POST">
         <button type="submit" class="delete">Delete</button>
