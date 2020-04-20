@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const path = require('path');
 const app = express();
 
 // =========== VIEW ENGINE
@@ -13,7 +14,7 @@ const birdController = require('./controllers/birdController');
 // =========== MIDDLEWARE
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ---------- Custom Middleware
 app.use((req, res, next) => {
